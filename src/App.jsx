@@ -69,7 +69,7 @@ function App() {
         "Marcos Antônio Viana dos Santos",
         "Thaiane Gomes da Costa",
         "Thayssa Millea Rodrigues Gomes",
-        "Célia Cristina Pinna Rodrigues",
+        "Célia Cristina Pinna Rodrigues (Suplente)",
       ]
     },
     {
@@ -141,7 +141,7 @@ function App() {
         "Marcos Antônio Viana dos Santos",
         "Lusiane Santos da Silva",
         "Thiago Ferreira Duque",
-        "Célia Cristina Pinna Rodrigues",
+        "Célia Cristina Pinna Rodrigues (Suplente)",
       ]
     },
   ];

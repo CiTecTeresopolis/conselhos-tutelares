@@ -9,8 +9,7 @@ function App() {
       telefone: "(21) 2043-3635",
       ramal: "403",
       endereco: "Av. Lúcio Meira, 375 - Várzea",
-      imagem:
-        "",
+      imagem: "",
       coordenadas:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230.52915272649307!2d-42.96864558034805!3d-22.41146311825052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x984ccf9aaaaaab%3A0xca5d138667905e18!2sCentro%20Administrativo%20Municipal!5e0!3m2!1spt-BR!2sbr!4v1755699327435!5m2!1spt-BR!2sbr",
       abrangencia: [
@@ -64,6 +63,14 @@ function App() {
         "Granja Comary",
         "Jardim Cascata",
       ],
+      conselheiros: [
+        "Djair Marcelino",
+        "Giovanni Moreira de Matos",
+        "Marcos Antônio Viana dos Santos",
+        "Thaiane Gomes da Costa",
+        "Thayssa Millea Rodrigues Gomes",
+        "Célia Cristina Pinna Rodrigues",
+      ]
     },
     {
       id: "ct-2",
@@ -71,7 +78,7 @@ function App() {
       telefone: "(21) 2043-3636",
       ramal: "404",
       endereco: "Av. Lúcio Meira, 375 - Várzea",
-      imagem:"",
+      imagem: "",
       coordenadas:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230.52915272649307!2d-42.96864558034805!3d-22.41146311825052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x984ccf9aaaaaab%3A0xca5d138667905e18!2sCentro%20Administrativo%20Municipal!5e0!3m2!1spt-BR!2sbr!4v1755699327435!5m2!1spt-BR!2sbr",
       abrangencia: [
@@ -128,10 +135,19 @@ function App() {
         "Vieira",
         "Vista Alegre",
       ],
+      conselheiros: [
+        "Alexandre Lima da Conceição",
+        "Denise de Oliveira Costa Teixeira",
+        "Marcos Antônio Viana dos Santos",
+        "Lusiane Santos da Silva",
+        "Thiago Ferreira Duque",
+        "Célia Cristina Pinna Rodrigues",
+      ]
     },
   ];
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded2, setIsExpanded2] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
   const [bairroSelecionado, setBairroSelecionado] = useState();
   const [unidadeSelecionado, setConselhoSelecionado] = useState(unidade[0]);
@@ -285,7 +301,17 @@ function App() {
             /> */}
             <div className="map-card-info">
               <h3>{unidadeSelecionado.titulo}</h3>
-              <p>Conselheiros: {unidadeSelecionado.coordenador}</p>
+              <div className="conselheiros-button" onClick={() => setIsExpanded2(!isExpanded2)}>
+                <p>Conselheiros</p>
+                {isExpanded2 ? <p>▲</p> : <p>▼</p>}
+              </div>
+              {isExpanded2 && (
+                <ul className="conselheiros-list">
+                  {unidadeSelecionado.conselheiros.map((conselheiro, index) => (
+                    <li key={index}>{conselheiro}</li>
+                  ))}
+                </ul>
+              )}
               <p>
                 Telefone: {unidadeSelecionado.telefone} - Ramal:{" "}
                 {unidadeSelecionado.ramal}
@@ -297,7 +323,7 @@ function App() {
                   title="Google Map"
                   src={unidadeSelecionado.coordenadas}
                   width="100%"
-                  height="500"
+                  height="300"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
